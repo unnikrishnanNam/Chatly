@@ -22,7 +22,8 @@ class _MyAppBarState extends State<MyAppBar> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(12),
-      height: 120,
+      margin: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top + 5),
+      height: 80,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -32,15 +33,6 @@ class _MyAppBarState extends State<MyAppBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          InkWell(
-            onTap: widget.handleLogout,
-            child: Ink(
-              child: const Icon(
-                Icons.logout_rounded,
-                size: 28,
-              ),
-            ),
-          ),
           const Text(
             'Chats',
             style: TextStyle(fontSize: 32),

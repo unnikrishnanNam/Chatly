@@ -24,7 +24,7 @@ class _MyButtonState extends State<MyButton> {
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-                colors: [Color(0xFFF66052), Color(0xFF )]),
+                colors: [Color(0xFFF66052), Color(0xFFDE3178)]),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Center(

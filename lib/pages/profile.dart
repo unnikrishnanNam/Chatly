@@ -33,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => const HomePage(),
             ));
         return false;
       },
@@ -167,17 +167,47 @@ class _ProfilePageState extends State<ProfilePage> {
                 backgroundColor: Colors.red.shade400,
                 label: const Text('Logout'),
                 icon: const Icon(Icons.logout_outlined),
-                onPressed: () async {
-                  Dialogs.showProgressBar(context);
-                  await APIs.auth.signOut().then((value) async {
-                    await GoogleSignIn().signOut().then((value) {
-                      Navigator.pop(context);
-                      Navigator.pop(context);
-                      // ignore: use_build_context_synchronously
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (builder) => const LoginPage()));
-                    });
-                  });
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Expanded(
+                        child: AlertDialog(
+                          backgroundColor: Colors.grey.shade900,
+                          title: const Text(
+                            'Do you want to Logout?',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          actionsAlignment: MainAxisAlignment.spaceEvenly,
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text('No'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () async {
+                                Dialogs.showProgressBar(context);
+                                await APIs.auth.signOut().then((value) async {
+                                  await GoogleSignIn().signOut().then((value) {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (builder) =>
+                                                const LoginPage()));
+                                  });
+                                });
+                              },
+                              child: Text('Yes'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
             ),
@@ -190,7 +220,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void _showBottomSheet() {
     showModalBottomSheet(
         context: context,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -200,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
           return Container(
             decoration: BoxDecoration(
               color: Colors.grey.shade900,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
@@ -225,14 +255,19 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () async {
                           final ImagePicker picker = ImagePicker();
                           final XFile? image = await picker.pickImage(
-                              source: ImageSource.gallery);
+                              source: ImageSource.gallery, imageQuality: 80);
                           if (image != null) {
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                            // ignore: use_build_context_synchronously
+                            Dialogs.showProgressBar(context);
                             setState(() {
                               _image = image.path;
                             });
-                            APIs.updateProfilPicture(File(_image!));
-                            // ignore: use_build_context_synchronously
-                            Navigator.pop(context);
+                            APIs.updateProfilPicture(File(_image!))
+                                .then((value) {
+                              Navigator.pop(context);
+                            });
                           }
                         },
                         child: const Icon(
@@ -245,7 +280,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () async {
                           final ImagePicker picker = ImagePicker();
                           final XFile? image = await picker.pickImage(
-                              source: ImageSource.camera);
+                              source: ImageSource.camera, imageQuality: 80);
                           if (image != null) {
                             setState(() {
                               _image = image.path;

@@ -38,8 +38,8 @@ class _SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 160,
-              width: 260,
+              height: 140,
+              width: 270,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 gradient: const LinearGradient(
@@ -48,8 +48,8 @@ class _SplashPageState extends State<SplashPage> {
               ),
               child: Center(
                 child: Container(
-                  height: 150,
-                  width: 250,
+                  height: 130,
+                  width: 260,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -57,10 +57,19 @@ class _SplashPageState extends State<SplashPage> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight),
                       borderRadius: BorderRadius.circular(20)),
-                  child: Text(
-                    'CHATLY',
-                    style:
-                        GoogleFonts.tourney(fontSize: 52, color: Colors.white),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image.asset(
+                        'lib/assets/images/logo_trans.png',
+                        width: 60,
+                      ),
+                      Text(
+                        'CHATLY',
+                        style: GoogleFonts.tourney(
+                            fontSize: 42, color: Colors.white),
+                      ),
+                    ],
                   ),
                 ),
               ),
