@@ -1,6 +1,7 @@
 import 'package:chatly/api/apis.dart';
 import 'package:chatly/pages/home.dart';
 import 'package:chatly/pages/login.dart';
+import 'package:chatly/styles/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -43,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 gradient: const LinearGradient(
-                  colors: [Color(0xFFF66052), Color(0xFFDE3178)],
+                  colors: [AppColors.primary, AppColors.secondary],
                 ),
               ),
               child: Center(

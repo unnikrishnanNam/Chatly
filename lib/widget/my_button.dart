@@ -1,3 +1,4 @@
+import 'package:chatly/styles/style_utils.dart';
 import 'package:flutter/material.dart';
 
 class MyButton extends StatefulWidget {
@@ -24,7 +25,7 @@ class _MyButtonState extends State<MyButton> {
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-                colors: [Color(0xFFF66052), Color(0xFFDE3178)]),
+                colors: [AppColors.primary, AppColors.secondary]),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Center(

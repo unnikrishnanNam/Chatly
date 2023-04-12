@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:chatly/api/apis.dart';
-import 'package:chatly/helper/dialogs.dart';
 import 'package:chatly/models/chat_user.dart';
 import 'package:chatly/pages/login.dart';
 import 'package:chatly/pages/profile.dart';

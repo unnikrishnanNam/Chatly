@@ -38,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     } catch (e) {
       Dialogs.showSnackbar(context, 'Something went wrong', Colors.red,
           Icons.warning_amber_rounded);
+      // ignore: avoid_print
       print('Sign in went wrong: $e');
     }
     return null;
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

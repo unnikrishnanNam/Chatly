@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chatly/helper/dialogs.dart';
 import 'package:chatly/models/chat_user.dart';
 import 'package:chatly/pages/home.dart';
+import 'package:chatly/styles/style_utils.dart';
 import 'package:chatly/widget/my_button.dart';
 import 'package:chatly/widget/my_textfield.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,8 +58,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     padding: const EdgeInsets.all(3),
                                     decoration: BoxDecoration(
                                         gradient: const LinearGradient(colors: [
-                                          Color(0xFFF66052),
-                                          Color(0xFFDE3178)
+                                          AppColors.primary,
+                                          AppColors.secondary
                                         ]),
                                         borderRadius:
                                             BorderRadius.circular(85)),
@@ -76,8 +77,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     padding: const EdgeInsets.all(3),
                                     decoration: BoxDecoration(
                                         gradient: const LinearGradient(colors: [
-                                          Color(0xFFF66052),
-                                          Color(0xFFDE3178)
+                                          AppColors.primary,
+                                          AppColors.secondary
                                         ]),
                                         borderRadius:
                                             BorderRadius.circular(85)),
@@ -108,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 },
                                 child: const Icon(
                                   Icons.edit_rounded,
-                                  color: Color(0xFFDE3178),
+                                  color: AppColors.secondary,
                                 ),
                               ),
                             )
@@ -149,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   Dialogs.showSnackbar(
                                       context,
                                       'Profile updated',
-                                      Colors.greenAccent.shade700,
+                                      Colors.green,
                                       Icons.done_rounded);
                                 });
                               }
@@ -164,47 +165,49 @@ class _ProfilePageState extends State<ProfilePage> {
             floatingActionButton: Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: FloatingActionButton.extended(
-                backgroundColor: Colors.red.shade400,
+                backgroundColor: AppColors.primary,
                 label: const Text('Logout'),
                 icon: const Icon(Icons.logout_outlined),
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return Expanded(
-                        child: AlertDialog(
-                          backgroundColor: Colors.grey.shade900,
-                          title: const Text(
-                            'Do you want to Logout?',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          actionsAlignment: MainAxisAlignment.spaceEvenly,
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text('No'),
-                            ),
-                            ElevatedButton(
-                              onPressed: () async {
-                                Dialogs.showProgressBar(context);
-                                await APIs.auth.signOut().then((value) async {
-                                  await GoogleSignIn().signOut().then((value) {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                    // ignore: use_build_context_synchronously
-                                    Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (builder) =>
-                                                const LoginPage()));
-                                  });
-                                });
-                              },
-                              child: Text('Yes'),
-                            ),
-                          ],
+                      return AlertDialog(
+                        backgroundColor: Colors.grey.shade900,
+                        title: const Text(
+                          'Do you want to Logout?',
+                          style: TextStyle(color: Colors.white),
                         ),
+                        actionsAlignment: MainAxisAlignment.spaceEvenly,
+                        actions: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primary),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('No'),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.tertiary),
+                            onPressed: () async {
+                              Dialogs.showProgressBar(context);
+                              await APIs.auth.signOut().then((value) async {
+                                await GoogleSignIn().signOut().then((value) {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (builder) =>
+                                              const LoginPage()));
+                                });
+                              });
+                            },
+                            child: Text('Yes'),
+                          ),
+                        ],
                       );
                     },
                   );
@@ -273,7 +276,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: const Icon(
                           Icons.image,
                           size: 34,
-                          color: Color(0xFFF66052),
+                          color: AppColors.primary,
                         ),
                       ),
                       GestureDetector(
@@ -293,7 +296,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: const Icon(
                           Icons.camera,
                           size: 34,
-                          color: Color(0xFFDE3178),
+                          color: AppColors.secondary,
                         ),
                       )
                     ],

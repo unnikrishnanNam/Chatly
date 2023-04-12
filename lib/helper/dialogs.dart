@@ -1,3 +1,4 @@
+import 'package:chatly/styles/style_utils.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
@@ -37,7 +38,7 @@ class Dialogs {
         builder: (_) => const Center(
                 child: CircularProgressIndicator(
               backgroundColor: Colors.white,
-              color: Colors.redAccent,
+              color: AppColors.primary,
             )));
   }
 }
