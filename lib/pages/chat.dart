@@ -22,6 +22,7 @@ class _ChatPageState extends State<ChatPage> {
   List<Message> _list = [];
 
   final _textController = TextEditingController();
+  final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +59,7 @@ class _ChatPageState extends State<ChatPage> {
 
                         if (_list.isNotEmpty) {
                           return ListView.builder(
+                              controller: _scrollController,
                               padding: const EdgeInsets.only(top: 10),
                               itemCount: _list.length,
                               itemBuilder: (context, index) {
@@ -69,6 +71,7 @@ class _ChatPageState extends State<ChatPage> {
                           return Center(
                             child: Text(
                               'Say Hi 👋 to ${widget.user.name}',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.grey.shade600, fontSize: 21),
                             ),

@@ -18,7 +18,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
           child: Container(
             height: 50,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.grey.shade900,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -34,7 +34,9 @@ class _ChatInputFieldState extends State<ChatInputField> {
                     child: TextField(
                   controller: widget.controller,
                   decoration: const InputDecoration(
-                      border: InputBorder.none, hintText: 'Type something ..'),
+                      border: InputBorder.none,
+                      hintText: 'Type something ..',
+                      hintStyle: TextStyle(color: Colors.white)),
                 )),
                 IconButton(
                   icon: const Icon(

@@ -33,12 +33,14 @@ class Dialogs {
 
   static void showProgressBar(BuildContext context) {
     showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (_) => const Center(
-                child: CircularProgressIndicator(
-              backgroundColor: Colors.white,
-              color: AppColors.primary,
-            )));
+      barrierDismissible: false,
+      context: context,
+      builder: (_) => const Center(
+        child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+          color: AppColors.primary,
+        ),
+      ),
+    );
   }
 }

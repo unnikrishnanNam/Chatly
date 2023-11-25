@@ -32,11 +32,10 @@ class _MessageCardState extends State<MessageCard> {
       children: [
         Flexible(
           child: Container(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
-              color: AppColors.secondary,
-              border: Border.all(color: Colors.white),
+              color: Colors.grey.shade800,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
@@ -93,12 +92,11 @@ class _MessageCardState extends State<MessageCard> {
         ),
         Flexible(
           child: Container(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.primary,
-              border: Border.all(color: Colors.white),
-              borderRadius: const BorderRadius.only(
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
                 bottomLeft: Radius.circular(20),
